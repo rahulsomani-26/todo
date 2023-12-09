@@ -37,7 +37,7 @@ ROOT_URLCONF = 'todoapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['todotemplates'],
+        'DIRS': ['todotemplates','tasks/tasktemplates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,6 +91,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS= [
     'todoapp/static',
+    'tasks/static',
 
 ]
 
