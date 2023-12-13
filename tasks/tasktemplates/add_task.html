@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load static %}
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap');
+    {% block title %} <title>{{title}}</title> {% endblock title %}
+    {% block stylesheet %}
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'tasks/css/main.css' %}">
+    {% endblock stylesheet %}  
+
+
+</head>
+<body>
+    <h2>Add Todo</h2>
+    {% block main %}
+
+    <div class="wrapper">
+        <div class="inner">
+            <form method="post" action="" class="addform">
+                {% csrf_token %}
+                <div class="title">
+                    {{ form.title.label}} 
+                </div>
+
+                <div class="title box">
+                    {{ form.title }}
+                </div>
+
+            <div class="description">
+                {{form.description.label}}
+            </div>
+
+            <div class="descriptionarea">
+                {{ form.description }}
+            </div>
+
+            <div class="iscompletelabel">
+                {{form.is_completed.label}}
+            </div>
+            
+            <div class="iscomplete">
+                {{form.is_completed}}
+            </div>
+                <button type="submit" class="addbtn">Add Task</button>
+            </form>
+        </div>
+        </div>
+    {% endblock main %}
+
+</body>
+</html>

@@ -5,6 +5,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('todo/', views.todo,name='todo'),
-    path('todo/', include('tasks.urls') ),
+    path('', views.todo,name='todo'),
+    path('', include('tasks.urls')),
 ]

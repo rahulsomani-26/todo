@@ -1,6 +1,11 @@
 from django.db import models
-
+from django.contrib import admin
 # Create your models here.
+
+class TaskAdmin(admin.ModelAdmin):
+    print('Within TaskAdmin')
+    list_display = ('title','description','date_created','is_completed')
+    search_fields = ('title',)
 
 class Task(models.Model):
     title = models.CharField(max_length=100)

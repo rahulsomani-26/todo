@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
     <title>{{title}}</title>
+    {% endblock title  %}
+    {% block stylesheet %}
     <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    {% endblock stylesheet %}
 </head>
 <body>
     <header>
@@ -14,7 +18,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="#">About</a></li>
-                <li><a href="#">Task</a></li>
+                <li><a href="{% url 'add_task' %}">Task</a></li>
                 <li><a href="#">SignIn</a></li>
                 <li><a href="#">SignUp</a></li>
             </ul>
@@ -22,7 +26,23 @@
         <a href="#" class="cta"><button>Contact</button></a>
     </header>
     <main>
-
+        {% block main %}
+        
+         <div class="card">
+            <img src="data:image/png;base64,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" alt="cardimg">
+            <div class="card-content">
+                <h2 class="card-title">Python Trainer</h2>
+                <p class="card-description">
+                    With over 18 years of extensive experience in training and development,
+                     I am a seasoned Corporate Python Trainer. Throughout my illustrious career,
+                      I have honed my expertise and delivered impactful training sessions for 
+                      major tech giants, including TCS, Cognizant, Accenture, Westagile Labs,
+                       and more. My comprehensive knowledge in Python, coupled with a dynamic
+                        teaching approach, has empowered countless professionals to excel in 
+                        their roles. </p>
+            </div>
+         </div>
+         {% endblock %}
     </main>
 
     <footer>
